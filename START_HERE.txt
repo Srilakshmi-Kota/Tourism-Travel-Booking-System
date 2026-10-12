@@ -1,0 +1,26 @@
+TRAVELEXPLORER - START HERE
+
+1. Open this folder in VS Code.
+2. Make sure Docker Desktop is running.
+3. Open Terminal in this project root.
+4. Run:
+
+   docker compose down
+   docker compose build --no-cache
+   docker compose up
+
+5. Open the browser at:
+
+   http://localhost:8090
+
+Application flow:
+Home -> Register/Login -> Explore -> Package Details -> Booking -> Payment -> Confirmation -> My Bookings
+
+If you previously ran an older version of the project, use the --no-cache build so Docker rebuilds every service.
+
+Services:
+Auth 8084
+Package 8081
+Booking 8082
+Payment 8083
+Gateway internal 8080 / browser 8090

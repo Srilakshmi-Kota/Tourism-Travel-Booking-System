@@ -1,0 +1,34 @@
+{
+  "info": {
+    "name": "Tourism Travel Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Packages",
+      "request": {"method": "GET", "url": "http://localhost:8081/api/packages"}
+    },
+    {
+      "name": "Create Booking",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {"mode":"raw","raw":"{\"userId\":101,\"packageId\":1,\"bookingType\":\"TOUR\",\"travellers\":2}"},
+        "url": "http://localhost:8082/api/bookings"
+      }
+    },
+    {
+      "name": "Get Bookings",
+      "request": {"method": "GET", "url": "http://localhost:8082/api/bookings"}
+    },
+    {
+      "name": "Simulate Payment",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {"mode":"raw","raw":"{\"bookingId\":1,\"amount\":17998,\"method\":\"CARD\"}"},
+        "url": "http://localhost:8083/api/payments"
+      }
+    }
+  ]
+}

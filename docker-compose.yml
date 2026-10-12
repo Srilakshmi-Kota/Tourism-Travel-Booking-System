@@ -1,0 +1,38 @@
+services:
+  package-service:
+    build: ./package-service
+    ports:
+      - "8081:8081"
+
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "8083:8083"
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "8084:8084"
+
+  booking-service:
+    build: ./booking-service
+    ports:
+      - "8082:8082"
+    volumes:
+      - booking-data:/app/data
+    depends_on:
+      - package-service
+      - payment-service
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8090:8080"
+    depends_on:
+      - package-service
+      - booking-service
+      - payment-service
+      - auth-service
+
+volumes:
+  booking-data:
